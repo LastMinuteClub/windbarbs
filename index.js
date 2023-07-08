@@ -32,13 +32,27 @@ $("document").ready(() => {
   });
   $("#radius").on("input", () => {
     pointRadius = $("#radius").val();
-    clearBarbs();
-    drawBarbs();
+    if (
+      pointRadius &&
+      pointRadius != "" &&
+      strokeLength &&
+      strokeLength != ""
+    ) {
+      clearBarbs();
+      drawBarbs();
+    }
   });
   $("#strokeLength").on("input", () => {
     strokeLength = $("#strokeLength").val();
-    clearBarbs();
-    drawBarbs();
+    if (
+      strokeLength &&
+      strokeLength != "" &&
+      pointRadius &&
+      pointRadius != ""
+    ) {
+      clearBarbs();
+      drawBarbs();
+    }
   });
   $("#generateButton").on("click", () => {
     // copyActivated = !copyActivated;
