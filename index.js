@@ -65,9 +65,9 @@ $("document").ready(() => {
   });
   $("#jsDownload").on("click", () => {
     const barbData = generateBarbLibrary();
-    let fileData = `const windBarbs=`;
+    let fileData = `const WIND_BARBS=`;
     fileData += barbData;
-    fileData += `;function round(speed){return (Math.round(speed/5.0)*5)};function getWindBarb(speed,degree){let wb=speed<0?windBarbs[0]:speed>355?windBarbs[355]:windBarbs[round(speed)];return wb.replace('225deg',degree+90+'deg')}`;
+    fileData += `;function round(speed){return (Math.round(speed/5.0)*5)};function getWindBarb(speed,degree){let wb=speed<0?WIND_BARBS[0]:speed>355?WIND_BARBS[355]:WIND_BARBS[round(speed)];return wb.replace('225deg',degree+90+'deg')}`;
     const file = new File([fileData], "windbarbs.js", {
       type: "text/plain",
     });
@@ -100,9 +100,9 @@ $("document").ready(() => {
   });
   $("#tsDownload").on("click", () => {
     const barbData = generateBarbLibrary();
-    let fileData = `export class WindBarbs{private windBarbs=`;
+    let fileData = `export class WindBarbs{private WIND_BARBS=`;
     fileData += barbData;
-    fileData += `;private round(speed:number){return Math.round(speed/5.0)*5};public getWindBarb(speed:number,degree:number){let wb=speed<0?this.windBarbs[0]:speed>355?this.windBarbs[355]:this.windBarbs[this.round(speed)];return wb.replace("225deg",degree+90+"deg")}}`;
+    fileData += `;private round(speed:number){return Math.round(speed/5.0)*5};public getWindBarb(speed:number,degree:number){let wb=speed<0?this.WIND_BARBS[0]:speed>355?this.WIND_BARBS[355]:this.WIND_BARBS[this.round(speed)];return wb.replace("225deg",degree+90+"deg")}}`;
     const file = new File([fileData], "windbarbs.ts", {
       type: "text/plain",
     });
@@ -238,7 +238,7 @@ function copyToClipboard(text) {
   navigator.clipboard.writeText(text);
   $(".copied").hide();
   $(".copied").removeClass("notify");
-  if(timeout) clearTimeout(timeout);
+  if (timeout) clearTimeout(timeout);
   $(".copied").show();
   $(".copied").addClass("notify");
   timeout = setTimeout(() => {
