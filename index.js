@@ -38,8 +38,8 @@ $("document").ready(() => {
       strokeLength &&
       strokeLength != ""
     ) {
-      clearBarbs();
-      drawBarbs();
+      // clearBarbs();
+      // drawBarbs();
     }
   });
   $("#strokeLength").on("input", () => {
@@ -50,13 +50,21 @@ $("document").ready(() => {
       pointRadius &&
       pointRadius != ""
     ) {
-      clearBarbs();
-      drawBarbs();
+      // clearBarbs();
+      // drawBarbs();
     }
   });
   $("#generateButton").on("click", () => {
-    // copyActivated = !copyActivated;
-    console.log(generateBarbLibrary());
+    if (
+      pointRadius &&
+      pointRadius != "" &&
+      strokeLength &&
+      strokeLength != ""
+    ) {
+      clearBarbs();
+      drawBarbs();
+      console.log(generateBarbLibrary());
+    }
   });
   $("#jsDownload").on("mouseover", () => {
     if (copyActivated) {
